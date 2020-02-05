@@ -10,6 +10,7 @@
 
 /* Otherwise just put the config content (json): */
 
+
 particlesJS('particles-js',
   
   {
@@ -130,3 +131,40 @@ particlesJS('particles-js',
   }
 
 );
+
+
+let deadline = new Date("march 28, 2020 15:37:25").getTime();
+let x = setInterval(function() {
+  let now = new Date().getTime();
+  let t = deadline - now;
+  let days = Math.floor(t / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+  let minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((t % (1000 * 60)) / 1000);
+  document.getElementById("day").innerHTML = days;
+  document.getElementById("hour").innerHTML = hours;
+  document.getElementById("minute").innerHTML = minutes;
+  document.getElementById("second").innerHTML = seconds;
+  if (t < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "TIME UP";
+    document.getElementById("day").innerHTML ='0';
+    document.getElementById("hour").innerHTML ='0';
+    document.getElementById("minute").innerHTML ='0' ;
+    document.getElementById("second").innerHTML = '0'; }
+}, 1000);
+
+const hamburger = document.querySelectorAll('.hamburger');
+const navLinks = document.querySelectorAll('.navLinks');
+const line = document.querySelectorAll('.line');
+const links = document.querySelectorAll('.navLinks li');
+
+hamburger[0].addEventListener("click", function(){
+  navLinks[0].classList.toggle('open');
+  line.forEach(line => {
+    line.classList.toggle('clicked');
+  });
+  links.forEach(link => {
+    link.classList.toggle('fade');
+  });
+});

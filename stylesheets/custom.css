@@ -9,17 +9,19 @@ body{
     left:0;
     width: 100vw;
     height: 100vh;
-    z-index: 1;
-    opacity: 1;
+    z-index: 0;
     background-color: transparent;
+
 }
 .page-1{
     color: white;
     display: flex;
     flex-direction: column;
-    background-color: black;
     width: 100vw;
     height: 100vh;
+    background-image: url("../assets/img/concert.jpg");
+    background-blend-mode: luminosity;
+    background-size: cover;
 }
 
 /* --- header starts --- */
@@ -37,6 +39,7 @@ body{
 }
 
 .hamburger{
+    z-index: 15;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -76,10 +79,134 @@ body{
     padding: 1em;
 }
 
+.buttons{
+    display: flex;
+    flex-direction: row;
+    margin: 2em 0;
+    padding: 2em;
+}
+.buttons button{
+    z-index: 10;
+    cursor: pointer;
+    background-color: transparent;
+    border: white 1px solid;
+    color : white;
+    padding: 1em;
+    border-radius: 0.2rem;
+    margin: 0.5em 1em;
+    font-size: larger;
+    transition: 0.5s;
+}
+.buttons button:hover{
+    background-color: white;
+    color: black;
+}
+
+.hero-timeout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    bottom:0;
+    background-color: whitesmoke;
+    color:black;
+    padding: 1em;
+}
+
+ul{
+    padding: 0;
+    margin:0;
+}
+li {
+    display: inline-block;
+    font-size: 1em;
+    list-style-type: none;
+    padding: 1em;
+    color: gray;
+    text-transform: uppercase;
+}
+
+li span {
+    color: black;
+    display: block;
+    font-size: 2rem;
+    text-align: center;
+}
+
+
+.navLinks{
+    background-color: white;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    clip-path: circle(0 at 90% -10%);
+    transition: all 0.7s ease-out;
+}
+
+.navLinks.open{
+    clip-path: circle(150vw at 90% -10%);
+    pointer-events: all;
+}
+.line.clicked{
+    border-color: black;
+}
+.line.clicked:nth-child(1){
+    transform: translate(0px, 10px) rotateZ(135deg);
+    transition: all 1s ease;
+}
+.line.clicked:nth-child(2){
+    transition: all 1s ease;
+    display: none;
+}
+.line.clicked:nth-child(3){
+    transform : rotateZ(45deg);
+    transition: all 1s ease;
+}
+.navLinks li{
+    opacity: 0;
+    padding: 1.5em;
+    display: block;
+}
+.navLinks li:nth-child(1){
+    transition: all 0.5s ease 0.2s;
+}
+.navLinks li:nth-child(2){
+    transition: all 0.5s ease 0.4s;
+}
+.navLinks li:nth-child(3){
+    transition: all 0.5s ease 0.6s;
+}
+.navLinks li:nth-child(4){
+    transition: all 0.5s ease 0.8s
+}
+li.fade{
+    opacity: 1;
+}
+.navLinks li a{
+    cursor: pointer;
+    color: black;
+    font-size: 2.5em;
+    text-decoration: none;
+    list-style: none;
+}
+
+
 @media screen and (max-width:700px){
     .page-1-body{
         margin:0;
         padding:0;
     }
-
+    .buttons{
+        flex-direction: column;
+    }
+    .navLinks.open{
+        clip-path: circle(150vh at 90% -10%);
+        pointer-events: all;
+    }
 }
